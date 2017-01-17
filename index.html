@@ -5,51 +5,71 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>calendario2</title>
-
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>calendario</title>
 
     <style>
+
+      .calendar-table  {
+        margin-left: 20px;
+      }
+
       .calendar-table {
         display: none;
+        border-spacing: 0px;
       }
 
       .activemonth {
         display: inline;
       }
 
-      #calendar {
-        margin: 20px;
-      }
-
-      th {
+      .calendar-table th {
         text-align: center;
       }
 
-      td {
-        text-align: right;
-        width: 30px;
+      .calendar-table tr {
+        line-height: 25px;
       }
 
+      .calendar-table td {
+        text-align: center;
+        width: 35px;
+      }
 
+     .calendar-header {
+       background-color: rgb(102, 102, 102);
+       color: white;
+       font-weight: bold;
+     }
+
+     .linkout {
+       color: #337ab7;
+       text-decoration: none;
+     }
+
+     .calendar-table td:hover {
+       text-decoration: underline;
+       font-weight: bold;
+     }
 
     </style>
 
   </head>
   <body>
 
+    <button id="previous">&#8249;</button>
+    <button id="next">&#8250;</button>
     <div id="calendar"></div>
 
+
     <script>
-      link_begin = '<a target="_blank" href="http://liturgia.pt/liturgiadiaria/dia.php?data='
+      link_begin = '<a class="linkout" target="_blank" href="http://liturgia.pt/liturgiadiaria/dia.php?data='
       link_middle = '">'
       link_end = '</a>'
 
-      cal_days_labels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-      cal_months_labels = ['January', 'February', 'March', 'April',
-                     'May', 'June', 'July', 'August', 'September',
-                     'October', 'November', 'December'];
+      cal_days_labels = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'];
+      cal_months_labels = ['Janeiro', 'Fevereiro', 'Março', 'Abril',
+                     'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro',
+                     'Outubro', 'Novembro', 'Dezembro'];
       // these are the days of the week for each month, in order
       cal_days_in_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
@@ -110,7 +130,7 @@
               for (var j = 0; j <= 6; j++) {
                   html += '<td class="calendar-day">';
                   if (day <= monthLength && (i > 0 || j >= startingDay)) {
-                      html += link_begin + cal_current_date.getFullYear() + '-' + (Number(cal_current_date.getMonth())+1).toString() + '-' + day.toString() + link_middle + day.toString() + link_end;
+                      html += link_begin + cal_current_date.getFullYear() + '-' + (this.month + cal + 1).toString() + '-' + day.toString() + link_middle + day.toString() + link_end;
                       day++;
                   }
                   html += '</td>';
@@ -148,6 +168,39 @@
           document.getElementById(aaa).className += ' activemonth'
         }
       }
+
+
+      // Next and previous month buttons
+      function hasClass(element, cls) {
+        return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
+      }
+
+      document.getElementById('next').addEventListener("click", function(){
+        for (var i = 0; i <= 11; i++) {
+          var cal_obj = document.getElementsByClassName('calendar-table')[i]
+          if (hasClass(cal_obj, 'activemonth')) {
+            if (cal_obj.id === 'Dezembro') {break;}
+            cal_obj.className = 'calendar-table'
+            var cal_obj_next = document.getElementsByClassName('calendar-table')[i+1]
+            cal_obj_next.className += ' activemonth'
+            break;
+          }
+        }
+      });
+
+      document.getElementById('previous').addEventListener("click", function(){
+        for (var i = 0; i <= 11; i++) {
+          var cal_obj = document.getElementsByClassName('calendar-table')[i]
+          if (hasClass(cal_obj, 'activemonth')) {
+            if (cal_obj.id === 'Janeiro') {break;}
+            cal_obj.className = 'calendar-table'
+            var cal_obj_previous = document.getElementsByClassName('calendar-table')[i-1]
+            cal_obj_previous.className += ' activemonth'
+            break;
+          }
+        }
+      });
+
     </script>
 
   </body>
