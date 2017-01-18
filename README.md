@@ -1,2 +1,2 @@
 # calendario
-Calendário do mês actual com links em cada dia
+Calendário do ano actual com links em cada dia
