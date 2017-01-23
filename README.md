@@ -5,10 +5,10 @@ A Javascript current year calendar with links on every day.
 
 ### Purpose
 
-This calendar was created to ser as a widget on blogspot. You can see it at work [here](http://ocantonaliturgia.blogspot.pt/2017/01/domingo-v-do-tempo-comum-ano-a.html).
+This calendar was created to serve as a widget on blogspot. You can see it at work [here](http://ocantonaliturgia.blogspot.pt/2017/01/domingo-v-do-tempo-comum-ano-a.html).
 
 
-### Modifyong or removing the links
+### Modifying or removing the links
 
 You can remove the links on each day by changing line 69 of the scripts.js file from:
 
