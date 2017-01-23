@@ -1,2 +1,9 @@
-# calendario
-Calendário do ano actual com links em cada dia
+# calendar
+
+A Javascript 12-month calendar with links on every day.
+
+
+### Purpose
+
+xxxxx
+
