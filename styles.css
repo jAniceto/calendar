@@ -1,0 +1,49 @@
+#cal_container {
+  width: 300px;
+}
+
+.calendar-table  {
+  margin-left: 20px;
+}
+
+.calendar-table {
+  display: none;
+  border-spacing: 0px;
+}
+
+.calendar-table th {
+  text-align: center;
+}
+
+.calendar-table tr {
+  line-height: 25px;
+}
+
+.calendar-table td {
+  text-align: center;
+  width: 35px;
+}
+
+.calendar-header {
+  background-color: rgb(102, 102, 102);
+  color: white;
+  font-weight: bold;
+}
+
+.linkout {
+  color: #337ab7;
+  text-decoration: none;
+}
+
+.calendar-table td:hover {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+#next {
+  float: right;
+}
+
+.activemonth {
+ display: inline;
+}
