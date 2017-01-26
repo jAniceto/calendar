@@ -43,7 +43,6 @@ Calendar.prototype.generateHTML = function () {
   for(var cal=0; cal<12; cal++){
    var curr = new Date(this.year, (this.month+cal), 1);
    var startingDay = curr.getDay();
-   console.log(startingDay);
     var monthName = cal_months_labels[this.month+cal];
     var monthLength = cal_days_in_month[this.month+cal];
     html += '<table class="calendar-table" id="' + monthName + '" >';
@@ -94,14 +93,15 @@ var cal = new Calendar();
 cal.generateHTML();
 document.getElementById("calendar").innerHTML = cal.getHTML()
 
+
 // Added
-current_date = new Date();
-current_month = cal_months_labels[current_date.getMonth()]
+var current_date = new Date();
+var current_month = cal_months_labels[current_date.getMonth()]
 
 for (var i = 0; i <= 11; i++) {
-var aaa = document.getElementsByClassName('calendar-table')[i].id
-  if (aaa == current_month) {
-    document.getElementById(aaa).className += ' activemonth'
+var cal_obj_month = document.getElementsByClassName('calendar-table')[i].id
+  if (cal_obj_month == current_month) {
+    document.getElementById(cal_obj_month).className += ' activemonth'
   }
 }
 
@@ -136,3 +136,15 @@ document.getElementById('previous').addEventListener("click", function(){
     }
   }
 });
+
+// Highlight current day
+var cal_day = document.getElementsByClassName('calendar-day')
+for (var i = 0; i <= cal_day.length-1; i++) {
+  if (typeof cal_day[i].getElementsByClassName("linkout")[0] !== 'undefined') {
+    if (cal_day[i].getElementsByClassName("linkout")[0].innerHTML == current_date.getDate()) {
+      if (cal_day[i].parentNode.parentNode.parentNode.id === cal_months_labels[current_date.getMonth()]) {
+        cal_day[i].className += ' currentday'
+      }
+    }
+  }
+}
