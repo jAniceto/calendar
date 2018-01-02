@@ -11,7 +11,7 @@ cal_days_in_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
 // this is the current date
 //cal_current_date = new Date(); original
-cal_current_date = new Date("January 1, 2017 11:11:00");
+cal_current_date = new Date("January 1, 2018 11:11:00");
 
 
 function Calendar(month, year) {
